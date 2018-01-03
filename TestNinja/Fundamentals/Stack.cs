@@ -26,6 +26,7 @@ namespace TestNinja.Fundamentals
             _list.RemoveAt(_list.Count - 1);
 
             return result; 
+            // return _list[0];
         }
 
 
