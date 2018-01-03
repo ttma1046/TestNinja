@@ -34,10 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DemeritPointsCalculatorTests.cs" />
     <Compile Include="CustomerControllerTests.cs" />
     <Compile Include="ErrorLoggerTests.cs" />
+    <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="HtmlFormatterTests.cs" />
     <Compile Include="MathTests.cs" />
+    <Compile Include="StackTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
