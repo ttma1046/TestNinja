@@ -14,7 +14,7 @@ namespace TestNinja.UnitTests
 
             var id = Guid.Empty;
             
-            logger.ErrorLogged += (sender, args) => { id = arg; };
+            logger.ErrorLogged += (sender, args) => { id = args; };
             
             logger.Log("a");
             

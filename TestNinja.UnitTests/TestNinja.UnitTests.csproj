@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ErrorLoggerTests.cs" />
+    <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="HtmlFormatterTests.cs" />
     <Compile Include="MathTests.cs" />
   </ItemGroup>
