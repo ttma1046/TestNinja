@@ -1,17 +1,23 @@
 ﻿using System.Net;
 
-namespace TestNinja.Mocking
+namespace TestNinja.Mocking.File
 {
     public class InstallerHelper
     {
+        private readonly IFileDownloader _fileDownloader;
         private string _setupDestinationFile;
+
+        public InstallerHelper(IFileDownloader fileDownloader, string steupDestinationFile)
+        {
+            this._fileDownloader = fileDownloader;
+            this._setupDestinationFile = steupDestinationFile;
+        }
 
         public bool DownloadInstaller(string customerName, string installerName)
         {
-            var client = new WebClient();
             try
             {
-                client.DownloadFile(
+                _fileDownloader.DownloadFile(
                     string.Format("http://example.com/{0}/{1}",
                         customerName,
                         installerName),

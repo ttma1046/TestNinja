@@ -11,7 +11,7 @@ namespace TestNinja.Mocking
     {
         public string Read(string path)
         {
-            return File.ReadAllText(path);
+            return System.IO.File.ReadAllText(path);
         }
         
     }
