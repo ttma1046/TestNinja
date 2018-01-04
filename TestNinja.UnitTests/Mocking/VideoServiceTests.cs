@@ -17,5 +17,7 @@ namespace TestNinja.UnitTests.Mocking
             Assert.That(result, Does.Contain("error").IgnoreCase);
         }
         
+        
+        
     }
 }
