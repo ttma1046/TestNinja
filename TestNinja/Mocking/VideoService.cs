@@ -37,7 +37,6 @@ namespace TestNinja.Mocking
 
         // [] => ""
         // [{}, {}] => "videoId1, videoId2"
-        
         public string GetUnprocessedVideosAsCsv()
         {
             var videoIds = new List<int>();
@@ -48,6 +47,7 @@ namespace TestNinja.Mocking
                 videoIds.Add(v.Id);
 
             return String.Join(",", videoIds);
+            // return "1";
         }
     }
 
