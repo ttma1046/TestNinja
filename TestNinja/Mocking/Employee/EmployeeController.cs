@@ -4,16 +4,16 @@ namespace TestNinja.Mocking.Employee
 {
     public class EmployeeController
     {
-        private readonly IEmployeeStorage _employeeStore;
+        private readonly IEmployeeStorage _employeeStorage;
 
-        public EmployeeController(IEmployeeStorage employeeStore)
+        public EmployeeController(IEmployeeStorage employeeStorage)
         {
-            _employeeStore = employeeStore;
+            _employeeStorage = employeeStorage;
         }
 
         public ActionResult DeleteEmployee(int id)
         {
-            _employeeStore.RemoveEmployee(id);
+            _employeeStorage.DeleteEmployee(id);
 
             return RedirectToAction("Employees");
         }
@@ -21,7 +21,7 @@ namespace TestNinja.Mocking.Employee
         private ActionResult RedirectToAction(string employees)
         {
             return new RedirectResult();
-        }
+        } 
     }
 
     public class ActionResult { }

@@ -19,14 +19,26 @@ namespace TestNinja.UnitTests.Mocking.Employee
         }
         
         [Test]
-        public void DeleteEmployee__()
+        public void DeleteEmployee_WhenCalled_ReturnRedirectResult()
         {
             // Arrange
             // Act
-            var result = employeeController.DeleteEmployee(0);
+            var result = employeeController.DeleteEmployee(1);
 
             // Assert
             Assert.That(result, Is.TypeOf<RedirectResult>());
         }
+        
+        [Test]
+        public void DeleteEmployee_WhenCalled_DeleteTheEmployeeFromDb()
+        {
+            // Arrange
+            
+            // Act
+            employeeController.DeleteEmployee(1);
+            // Assert
+            _employeeStorage.Verify(s => s.DeleteEmployee(1));
+        }    
+       
     }
 }

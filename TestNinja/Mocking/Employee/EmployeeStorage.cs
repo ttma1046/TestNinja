@@ -9,9 +9,17 @@
             _db = new EmployeeContext();
         }
         
-        public void RemoveEmployee(int id)
+        public void DeleteEmployee(int id)
         {
             var employee = _db.Employees.Find(id);
+            if (employee == null) return;
+            /*
+            if (employee != null)            
+            {
+                _db.Employees.Remove(employee);
+                _db.SaveChanges();
+            }
+            */
             _db.Employees.Remove(employee);
             _db.SaveChanges();
         }
