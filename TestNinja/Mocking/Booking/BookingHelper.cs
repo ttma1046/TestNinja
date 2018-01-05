@@ -1,19 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace TestNinja.Mocking
+namespace TestNinja.Mocking.Booking
 {
     public static class BookingHelper
     {
+        private readonly static IUnitOfWork _unitOfWork;
+
+        public BookingHelper(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+        
         public static string OverlappingBookingsExist(Booking booking)
         {
             if (booking.Status == "Cancelled")
                 return string.Empty;
 
-            var unitOfWork = new UnitOfWork();
             var bookings =
-                unitOfWork.Query<Booking>()
+                _unitOfWork.Query<Booking>()
                     .Where(
                         b => b.Id != booking.Id && b.Status != "Cancelled");
 
@@ -26,14 +31,6 @@ namespace TestNinja.Mocking
                         && booking.DepartureDate <= b.DepartureDate);
 
             return overlappingBooking == null ? string.Empty : overlappingBooking.Reference;
-        }
-    }
-
-    public class UnitOfWork
-    {
-        public IQueryable<T> Query<T>()
-        {
-            return new List<T>().AsQueryable();
         }
     }
 
