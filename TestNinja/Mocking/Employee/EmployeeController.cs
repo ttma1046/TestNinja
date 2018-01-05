@@ -1,21 +1,20 @@
 ﻿using System.Data.Entity;
 
-namespace TestNinja.Mocking
+namespace TestNinja.Mocking.Employee
 {
     public class EmployeeController
     {
-        private EmployeeContext _db;
+        private readonly IEmployeeStorage _employeeStore;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeeStorage employeeStore)
         {
-            _db = new EmployeeContext();
+            _employeeStore = employeeStore;
         }
 
         public ActionResult DeleteEmployee(int id)
         {
-            var employee = _db.Employees.Find(id);
-            _db.Employees.Remove(employee);
-            _db.SaveChanges();
+            _employeeStore.RemoveEmployee(id);
+
             return RedirectToAction("Employees");
         }
 
@@ -29,7 +28,7 @@ namespace TestNinja.Mocking
  
     public class RedirectResult : ActionResult { }
     
-    public class EmployeeContext
+    public class EmployeeContext 
     {
         public DbSet<Employee> Employees { get; set; }
 
