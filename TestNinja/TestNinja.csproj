@@ -65,6 +65,8 @@
     <Compile Include="Mocking\HouseKeeper\HousekeeperHelper.cs" />
     <Compile Include="Mocking\HouseKeeper\HousekeeperService.cs" />
     <Compile Include="Mocking\HouseKeeper\IHousekeeperService.cs" />
+    <Compile Include="Mocking\HouseKeeper\IStatementGenerator.cs" />
+    <Compile Include="Mocking\HouseKeeper\StatementGenerator.cs" />
     <Compile Include="Mocking\IUnitOfWork.cs" />
     <Compile Include="Mocking\UnitOfWork.cs" />
     <Compile Include="Mocking\Employee\EmployeeController.cs" />
