@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace TestNinja.Mocking.Booking
+namespace TestNinja.Mocking
 {
     public interface IUnitOfWork
     {

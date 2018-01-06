@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TestNinja.Mocking.Booking
+namespace TestNinja.Mocking
 {
     public class UnitOfWork : IUnitOfWork
     {

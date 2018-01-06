@@ -87,7 +87,7 @@ namespace TestNinja.Mocking
             client.Send(message);
             message.Dispose();
 
-            File.Delete(filename);
+            System.IO.File.Delete(filename);
         }
     }
 
