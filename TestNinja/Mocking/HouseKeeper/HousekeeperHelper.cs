@@ -7,12 +7,18 @@ namespace TestNinja.Mocking.HouseKeeper
         private readonly IHousekeeperService _housekeeperService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStatementGenerator _statementGenerator;
+        private readonly IEmailSender _emailSender;
 
-        public HousekeeperHelper(IHousekeeperService housekeeperService, IUnitOfWork unitOfWork, IStatementGenerator statementGenerator)
+        public HousekeeperHelper(
+            IHousekeeperService housekeeperService,
+            IUnitOfWork unitOfWork,
+            IStatementGenerator statementGenerator,
+            IEmailSender emailSender)
         {
             _housekeeperService = housekeeperService;
             _unitOfWork = unitOfWork;
             _statementGenerator = statementGenerator;
+            _emailSender = emailSender;
         }
         
         public bool SendStatementEmails(DateTime statementDate)
@@ -34,7 +40,7 @@ namespace TestNinja.Mocking.HouseKeeper
 
                 try
                 {
-                    _housekeeperService.EmailFile(emailAddress, emailBody, statementFilename,
+                    _emailSender.EmailFile(emailAddress, emailBody, statementFilename,
                         string.Format("Sandpiper Statement {0:yyyy-MM} {1}", statementDate, housekeeper.FullName));
                 }
                 catch (Exception e)

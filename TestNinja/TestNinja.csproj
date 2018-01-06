@@ -62,8 +62,10 @@
     <Compile Include="Mocking\Booking\BookingHelper.cs" />
     <Compile Include="Mocking\Booking\BookingRepository.cs" />
     <Compile Include="Mocking\Booking\IBookingRepository.cs" />
+    <Compile Include="Mocking\HouseKeeper\EmailSender.cs" />
     <Compile Include="Mocking\HouseKeeper\HousekeeperHelper.cs" />
     <Compile Include="Mocking\HouseKeeper\HousekeeperService.cs" />
+    <Compile Include="Mocking\HouseKeeper\IEmailSender.cs" />
     <Compile Include="Mocking\HouseKeeper\IHousekeeperService.cs" />
     <Compile Include="Mocking\HouseKeeper\IStatementGenerator.cs" />
     <Compile Include="Mocking\HouseKeeper\StatementGenerator.cs" />
