@@ -58,7 +58,10 @@
     <Compile Include="Fundamentals\PhoneNumber.cs" />
     <Compile Include="Fundamentals\Reservation.cs" />
     <Compile Include="Fundamentals\Stack.cs" />
+    <Compile Include="Mocking\Booking\Booking.cs" />
     <Compile Include="Mocking\Booking\BookingHelper.cs" />
+    <Compile Include="Mocking\Booking\BookingRepository.cs" />
+    <Compile Include="Mocking\Booking\IBookingRepository.cs" />
     <Compile Include="Mocking\Booking\IUnitOfWork.cs" />
     <Compile Include="Mocking\Booking\UnitOfWork.cs" />
     <Compile Include="Mocking\Employee\EmployeeController.cs" />

@@ -49,7 +49,7 @@ namespace TestNinja.UnitTests
         }
         
         [Test]
-        public void Push_ArgIsNull_ThrowArgumentNullException(object obj)
+        public void Push_ArgIsNull_ThrowArgumentNullException()
         {
             var stack = new Stack<string>();
              
