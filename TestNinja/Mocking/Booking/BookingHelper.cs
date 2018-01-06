@@ -10,15 +10,24 @@ namespace TestNinja.Mocking.Booking
                 return string.Empty;
 
             var bookings = bookingRepository.GetActiveBookings(booking.Id);
-
+            
+            /*
             var overlappingBooking =
                 bookings.FirstOrDefault(
                     b =>
                         booking.ArrivalDate >= b.ArrivalDate
                         && booking.ArrivalDate < b.DepartureDate
                         || booking.DepartureDate > b.ArrivalDate
-                        && booking.DepartureDate <= b.DepartureDate);
-
+                        && booking.DepartureDate <= b.DepartureDate
+                        || booking.ArrivalDate < b.ArrivalDate
+                        && booking.DepartureDate > b.DepartureDate);
+            */
+            
+            var overlappingBooking =
+                bookings.FirstOrDefault(
+                    b => booking.ArrivalDate < b.DepartureDate &&  
+                    booking.DepartureDate > b.ArrivalDate);
+            
             return overlappingBooking == null ? string.Empty : overlappingBooking.Reference;
         }
     }
