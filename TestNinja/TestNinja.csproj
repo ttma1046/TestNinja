@@ -62,6 +62,9 @@
     <Compile Include="Mocking\Booking\BookingHelper.cs" />
     <Compile Include="Mocking\Booking\BookingRepository.cs" />
     <Compile Include="Mocking\Booking\IBookingRepository.cs" />
+    <Compile Include="Mocking\HouseKeeper\HousekeeperHelper.cs" />
+    <Compile Include="Mocking\HouseKeeper\HousekeeperService.cs" />
+    <Compile Include="Mocking\HouseKeeper\IHousekeeperService.cs" />
     <Compile Include="Mocking\IUnitOfWork.cs" />
     <Compile Include="Mocking\UnitOfWork.cs" />
     <Compile Include="Mocking\Employee\EmployeeController.cs" />
@@ -70,7 +73,6 @@
     <Compile Include="Mocking\FileReader.cs" />
     <Compile Include="Mocking\File\FileDownloader.cs" />
     <Compile Include="Mocking\File\InstallerHelper.cs" />
-    <Compile Include="Mocking\HousekeeperHelper.cs" />
     <Compile Include="Mocking\OrderService.cs" />
     <Compile Include="Mocking\Product.cs" />
     <Compile Include="Mocking\Program.cs" />

@@ -1,48 +1,23 @@
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
+﻿using System.Linq;
 
-namespace TestNinja.Mocking
+namespace TestNinja.Mocking.HouseKeeper
 {
-    public static class HousekeeperHelper
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Text;
+    
+    public class HousekeeperService : IHousekeeperService
     {
-        private static readonly UnitOfWork UnitOfWork = new UnitOfWork();
+        private readonly IUnitOfWork _unitOfWork;
 
-        public static bool SendStatementEmails(DateTime statementDate)
+        public HousekeeperService(IUnitOfWork unitOfWork)
         {
-            var housekeepers = UnitOfWork.Query<Housekeeper>();
-
-            foreach (var housekeeper in housekeepers)
-            {
-                if (housekeeper.Email == null)
-                    continue;
-
-                var statementFilename = SaveStatement(housekeeper.Oid, housekeeper.FullName, statementDate);
-
-                if (string.IsNullOrWhiteSpace(statementFilename))
-                    continue;
-
-                var emailAddress = housekeeper.Email;
-                var emailBody = housekeeper.StatementEmailBody;
-
-                try
-                {
-                    EmailFile(emailAddress, emailBody, statementFilename,
-                        string.Format("Sandpiper Statement {0:yyyy-MM} {1}", statementDate, housekeeper.FullName));
-                }
-                catch (Exception e)
-                {
-                    XtraMessageBox.Show(e.Message, string.Format("Email failure: {0}", emailAddress),
-                        MessageBoxButtons.OK);
-                }
-            }
-
-            return true;
+            _unitOfWork = unitOfWork;
         }
-
-        private static string SaveStatement(int housekeeperOid, string housekeeperName, DateTime statementDate)
+        
+        public string SaveStatement(int housekeeperOid, string housekeeperName, DateTime statementDate)
         {
             var report = new HousekeeperStatementReport(housekeeperOid, statementDate);
 
@@ -59,8 +34,8 @@ namespace TestNinja.Mocking
 
             return filename;
         }
-
-        private static void EmailFile(string emailAddress, string emailBody, string filename, string subject)
+        
+        public void EmailFile(string emailAddress, string emailBody, string filename, string subject)
         {
             var client = new SmtpClient(SystemSettingsHelper.EmailSmtpHost)
             {
@@ -89,20 +64,14 @@ namespace TestNinja.Mocking
 
             System.IO.File.Delete(filename);
         }
-    }
 
-    public enum MessageBoxButtons
-    {
-        OK
-    }
-
-    public class XtraMessageBox
-    {
-        public static void Show(string s, string housekeeperStatements, MessageBoxButtons ok)
+        public IQueryable<Housekeeper> RetrieveHousekeepers()
         {
+            var housekeepers = _unitOfWork.Query<Housekeeper>();
+            return housekeepers;
         }
     }
-
+    
     public class MainForm
     {
         public bool HousekeeperStatementsSending { get; set; }
@@ -161,5 +130,17 @@ namespace TestNinja.Mocking
         public void ExportToPdf(string filename)
         {
         }
+    }
+    
+    public class XtraMessageBox
+    {
+        public static void Show(string s, string housekeeperStatements, MessageBoxButtons ok)
+        {
+        }
+    }
+    
+    public enum MessageBoxButtons
+    {
+        OK
     }
 }
