@@ -1,26 +1,55 @@
-﻿using System.Linq;
+using System;
 
 namespace TestNinja.Mocking.HouseKeeper
 {
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Mail;
-    using System.Text;
-    
-    public class HousekeeperService : IHousekeeperService
-    {
+    public class HousekeeperService
+    {        
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStatementGenerator _statementGenerator;
+        private readonly IEmailSender _emailSender;
 
-        public HousekeeperService(IUnitOfWork unitOfWork)
+        public HousekeeperService(
+            IUnitOfWork unitOfWork,
+            IStatementGenerator statementGenerator,
+            IEmailSender emailSender)
         {
             _unitOfWork = unitOfWork;
+            _statementGenerator = statementGenerator;
+            _emailSender = emailSender;
         }
         
-        public IQueryable<Housekeeper> RetrieveHousekeepers()
+        public bool SendStatementEmails(DateTime statementDate)
         {
             var housekeepers = _unitOfWork.Query<Housekeeper>();
-            return housekeepers;
+
+            foreach (var housekeeper in housekeepers)
+            {
+                if (string.IsNullOrWhiteSpace(housekeeper.Email))
+                    continue;
+                
+                var statementFilename = _statementGenerator.SaveStatement(housekeeper.Oid, housekeeper.FullName, statementDate);
+
+                if (string.IsNullOrWhiteSpace(statementFilename))
+                    continue;
+
+                var emailAddress = housekeeper.Email;
+                var emailBody = housekeeper.StatementEmailBody;
+
+                try
+                {
+                    _emailSender.EmailFile(emailAddress, emailBody, statementFilename,
+                        string.Format("Sandpiper Statement {0:yyyy-MM} {1}", statementDate, housekeeper.FullName));
+                }
+                catch (Exception e)
+                {
+                    XtraMessageBox.Show(e.Message, string.Format("Email failure: {0}", emailAddress),
+                        MessageBoxButtons.OK);
+
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
     
