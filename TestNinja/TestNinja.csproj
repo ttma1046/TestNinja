@@ -67,6 +67,7 @@
     <Compile Include="Mocking\HouseKeeper\IEmailSender.cs" />
     <Compile Include="Mocking\HouseKeeper\IHousekeeperService.cs" />
     <Compile Include="Mocking\HouseKeeper\IStatementGenerator.cs" />
+    <Compile Include="Mocking\HouseKeeper\IMessageBox.cs" />
     <Compile Include="Mocking\HouseKeeper\StatementGenerator.cs" />
     <Compile Include="Mocking\IUnitOfWork.cs" />
     <Compile Include="Mocking\UnitOfWork.cs" />
