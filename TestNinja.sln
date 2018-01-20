@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNinja", "TestNinja/TestNinja.csproj", "{7328740E-4B78-464F-8352-65D887F2145F}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNinja", "TestNinja\TestNinja.csproj", "{7328740E-4B78-464F-8352-65D887F2145F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNinja.UnitTests", "TestNinja.UnitTests\TestNinja.UnitTests.csproj", "{1891B136-18D0-461C-8F6C-41BD8A518301}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNinja.UnitTests.NUnit", "TestNinja.UnitTests.NUnit\TestNinja.UnitTests.NUnit.csproj", "{1EF7DAFA-7911-4B8D-96B2-037562782AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNinja.UnitTests.v2", "TestNinja.UnitTests.v2\TestNinja.UnitTests.v2.csproj", "{9FC7832D-E5D3-409E-BBE7-2967EE1CD046}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1EF7DAFA-7911-4B8D-96B2-037562782AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF7DAFA-7911-4B8D-96B2-037562782AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EF7DAFA-7911-4B8D-96B2-037562782AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FC7832D-E5D3-409E-BBE7-2967EE1CD046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC7832D-E5D3-409E-BBE7-2967EE1CD046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC7832D-E5D3-409E-BBE7-2967EE1CD046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC7832D-E5D3-409E-BBE7-2967EE1CD046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

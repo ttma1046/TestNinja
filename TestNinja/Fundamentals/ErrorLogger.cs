@@ -13,20 +13,25 @@ namespace TestNinja.Fundamentals
         
         public void Log(string error)
         {
+            // null
+            // ""
+            // " "
             if (String.IsNullOrWhiteSpace(error))
                 throw new ArgumentNullException();
                 
-            LastError = error; 
-            
+            LastError = error;
+
             // Write the log to a storage
             // ...
+
             _errorId = Guid.NewGuid();
-            onErrorLogged();
+
+            onErrorLogged(_errorId);
         }
 
-        public virtual void onErrorLogged()
+        protected virtual void onErrorLogged(Guid errorId)
         {
-            ErrorLogged?.Invoke(this, _errorId);
+            ErrorLogged?.Invoke(this, errorId);
         }
     }
 }

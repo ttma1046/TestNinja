@@ -6,8 +6,9 @@ namespace TestNinja.UnitTests.NUnit
     [TestFixture]
     public class ReservationTests
     {
+
         [Test]
-        public void NUnit_CanBeCanncelledBy_AdminCancelling_ReturnsTrue()
+        public void CanBeCanncelledBy_AdminCancelling_ReturnsTrue()
         {
             // Arrange
             var reservation = new Reservation();
@@ -22,22 +23,22 @@ namespace TestNinja.UnitTests.NUnit
         }
 
         [Test]
-        public void NUnit_CanBeCancelledBy_SameUserCancellingTheReservation_ReturnsTrue()
+        public void CanBeCancelledBy_SameUserCancellingTheReservation_ReturnsTrue()
         {
             // Arrange
-            var UserMadeBy = new User();
+            var userMadeBy = new User();
 
-            var reservation = new Reservation { MadeBy = UserMadeBy };
+            var reservation = new Reservation { MadeBy = userMadeBy };
 
             // Act
-            var result = reservation.CanBeCancelledBy(UserMadeBy);
+            var result = reservation.CanBeCancelledBy(userMadeBy);
 
             // Assert
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void NUnit_CanBeCancelledBy_AnotherUserCancellingReservation_ReturnsFalse()
+        public void CanBeCancelledBy_AnotherUserCancellingReservation_ReturnsFalse()
         {
             // Arrange
             var reservation = new Reservation { MadeBy = new User() };
@@ -52,7 +53,7 @@ namespace TestNinja.UnitTests.NUnit
         }
 
         [Test]
-        public void NUnit_CanBeCancekkedBy_NullUserCantCancellingReservation_ReturnsFalse()
+        public void CanBeCancelledBy_NullUserCantCancellingReservation_ReturnsFalse()
         {
             // Arrange
             var reservation = new Reservation();
