@@ -29,7 +29,6 @@ namespace TestNinja.Fundamentals
             // return _list[0];
         }
 
-
         public T Peek()
         {
             if (_list.Count == 0)
