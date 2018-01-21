@@ -63,6 +63,7 @@
     <Compile Include="Mocking\Booking\BookingHelper.cs" />
     <Compile Include="Mocking\Booking\BookingRepository.cs" />
     <Compile Include="Mocking\Booking\IBookingRepository.cs" />
+    <Compile Include="Mocking\JsonDeserializer.cs" />
     <Compile Include="Mocking\HouseKeeper\EmailSender.cs" />
     <Compile Include="Mocking\HouseKeeper\HousekeeperService.cs" />
     <Compile Include="Mocking\HouseKeeper\IEmailSender.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Mocking\HouseKeeper\IStatementGenerator.cs" />
     <Compile Include="Mocking\HouseKeeper\IMessageBox.cs" />
     <Compile Include="Mocking\HouseKeeper\StatementGenerator.cs" />
+    <Compile Include="Mocking\IFileReader.cs" />
+    <Compile Include="Mocking\IDeserializer.cs" />
     <Compile Include="Mocking\IUnitOfWork.cs" />
     <Compile Include="Mocking\UnitOfWork.cs" />
     <Compile Include="Mocking\Employee\EmployeeController.cs" />

@@ -1,35 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
-using System.Linq;
-using Newtonsoft.Json;
 using TestNinja.Mocking.Repository;
 
 namespace TestNinja.Mocking
 {
     public class VideoService
     {
-        private readonly IFileReader fileReader;
-        private readonly IVideoRepository videoRepository;
+        private readonly IFileReader _fileReader;
+        private readonly IDeserializer _deserializer;
+        private readonly IVideoRepository _videoRepository;
 
-        /*
-        public VideoService()
+        public VideoService(IFileReader fileReader = null, IVideoRepository videoRepository = null, IDeserializer deserializer = null)
         {
-            fileReader = new FileReader();
-        }
-        */
-
-        public VideoService(IFileReader fileReader = null, IVideoRepository videoRepository = null)
-        {
-            this.fileReader = fileReader ?? new FileReader();
-            this.videoRepository = videoRepository ?? new VideoRepository();
+            this._fileReader = fileReader ?? new FileReader();
+            this._deserializer = deserializer ?? new JsonDeserializer();
+            this._videoRepository = videoRepository ?? new VideoRepository();
         }
         
-        public string ReadVideoTitle()
+        public string ReadVideoTitle() // IFileReader fileReader
         {
-            var str = fileReader.Read("video.txt"); 
-            var video = JsonConvert.DeserializeObject<Video>(str);
+            var str = this._fileReader.Read("video.txt"); 
+            var video = this._deserializer.DeserializeObject<Video>(str);
             if (video == null)
                 return "Error parsing the video.";
             return video.Title;
@@ -41,7 +33,7 @@ namespace TestNinja.Mocking
         {
             var videoIds = new List<int>();
 
-            var videos = videoRepository.GetUnprocessedVideos();
+            var videos = this._videoRepository.GetUnprocessedVideos();
 
             foreach (var v in videos)
                 videoIds.Add(v.Id);
