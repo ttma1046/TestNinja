@@ -63,6 +63,7 @@
     <Compile Include="Mocking\Booking\BookingHelper.cs" />
     <Compile Include="Mocking\Booking\BookingRepository.cs" />
     <Compile Include="Mocking\Booking\IBookingRepository.cs" />
+    <Compile Include="Mocking\File\IFileDownloader.cs" />
     <Compile Include="Mocking\JsonDeserializer.cs" />
     <Compile Include="Mocking\HouseKeeper\EmailSender.cs" />
     <Compile Include="Mocking\HouseKeeper\HousekeeperService.cs" />

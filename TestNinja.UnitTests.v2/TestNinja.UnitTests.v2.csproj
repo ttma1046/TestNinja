@@ -68,6 +68,8 @@
     <Compile Include="CustomerControllerTests.cs" />
     <Compile Include="DemeritPointsCalculatorTests.cs" />
     <Compile Include="ErrorLoggerTests.cs" />
+    <Compile Include="InstallerHelperTests.cs" />
+    <Compile Include="Mocking\Employee\EmployeeControllerTests.cs" />
     <Compile Include="Mocking\FakeDeserializer.cs" />
     <Compile Include="Mocking\FakeFileReader.cs" />
     <Compile Include="FizzBuzzTests.cs" />

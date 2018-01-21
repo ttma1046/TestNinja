@@ -7,17 +7,17 @@ namespace TestNinja.Mocking.File
         private readonly IFileDownloader _fileDownloader;
         private string _setupDestinationFile;
 
-        public InstallerHelper(IFileDownloader fileDownloader, string steupDestinationFile)
+        public InstallerHelper(IFileDownloader fileDownloader, string setupDestinationFile)
         {
             this._fileDownloader = fileDownloader;
-            this._setupDestinationFile = steupDestinationFile;
+            this._setupDestinationFile = setupDestinationFile;
         }
 
         public bool DownloadInstaller(string customerName, string installerName)
         {
             try
             {
-                _fileDownloader.DownloadFile(
+                this._fileDownloader.DownloadFile(
                     string.Format("http://example.com/{0}/{1}",
                         customerName,
                         installerName),
